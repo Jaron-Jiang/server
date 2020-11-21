@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>cn.swu_acm.projects.sia.libs</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SignInAppBasicClass">
+      <HintPath>..\..\..\..\Desktop\SignInAppBasicClass.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

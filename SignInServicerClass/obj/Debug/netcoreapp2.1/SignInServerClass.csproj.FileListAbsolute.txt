@@ -1,0 +1,8 @@
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\bin\Debug\netcoreapp2.1\SignInServerClass.deps.json
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\bin\Debug\netcoreapp2.1\SignInServerClass.dll
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\bin\Debug\netcoreapp2.1\SignInAppBasicClass.dll
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\obj\Debug\netcoreapp2.1\SignInServerClass.csprojAssemblyReference.cache
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\obj\Debug\netcoreapp2.1\SignInServerClass.csproj.CoreCompileInputs.cache
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\obj\Debug\netcoreapp2.1\SignInServerClass.AssemblyInfoInputs.cache
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\obj\Debug\netcoreapp2.1\SignInServerClass.AssemblyInfo.cs
+E:\Documents\vs2017_code\SignInServicerClass\SignInServicerClass\obj\Debug\netcoreapp2.1\SignInServerClass.csproj.CopyComplete

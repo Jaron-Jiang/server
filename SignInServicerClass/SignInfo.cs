@@ -4,8 +4,10 @@ using System.Text;
 
 namespace cn.swu_acm.projects.sia.libs
 {
-    public abstract class Info : ServerData
+    public class SignInfo : Info
     {
-
+        private string SignInStarttime;
+        LoginDataPassword
     }
+   
 }
