@@ -729,23 +729,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lenovo\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\fujiaxu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Documents\\vs2017_code\\SignInServicerClass\\SignInServicerClass\\SignInServerClass.csproj",
+      "projectUniqueName": "C:\\Users\\fujiaxu\\Desktop\\类库\\SignInServicerClass\\SignInServerClass.csproj",
       "projectName": "SignInServerClass",
-      "projectPath": "E:\\Documents\\vs2017_code\\SignInServicerClass\\SignInServicerClass\\SignInServerClass.csproj",
-      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "E:\\Documents\\vs2017_code\\SignInServicerClass\\SignInServicerClass\\obj\\",
+      "projectPath": "C:\\Users\\fujiaxu\\Desktop\\类库\\SignInServicerClass\\SignInServerClass.csproj",
+      "packagesPath": "C:\\Users\\fujiaxu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fujiaxu\\Desktop\\类库\\SignInServicerClass\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fujiaxu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -757,6 +753,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "projectReferences": {}
         }
       },
@@ -768,6 +765,7 @@
     },
     "frameworks": {
       "netcoreapp2.1": {
+        "targetAlias": "netcoreapp2.1",
         "dependencies": {
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
@@ -781,10 +779,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
