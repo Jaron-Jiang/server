@@ -11,7 +11,7 @@ namespace cn.swu_acm.projects.sia.libs
     {
         
     }
-    public class SignInfo : Info
+    public class SignInInfo : Info
     {
         private string sign_in_start_time;
         private string sign_in_end_time;
@@ -26,7 +26,7 @@ namespace cn.swu_acm.projects.sia.libs
         private string sign_in_question;
         private LinkedList<UserSet> need_to_sign_in;
 
-        public SignInfo()
+        public SignInInfo()
         {
             SignInStartime = "19700101000000";
             SignInEndtime = "19700101000000";
@@ -148,6 +148,10 @@ namespace cn.swu_acm.projects.sia.libs
             {
                 need_to_sign_in = value;
             }
+        }
+        public void addUserSet(UserSet userSet)
+        {
+            NeedToSignIn.AddLast(userSet);
         }
 
     }

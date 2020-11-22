@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace cn.swu_acm.projects.sia.libs
 {
-    public abstract class ServerData
+    public abstract class ServerData : IDataToJson
     {
         public string DataToJson()
         {
