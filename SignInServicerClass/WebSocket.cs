@@ -11,11 +11,12 @@ namespace cn.swu_acm.projects.sia.libs
     {
         private string address, port;
         private IDictionary<string, IWebSocketConnection> dic_Sockets = new Dictionary<string, IWebSocketConnection>();
-        public webSocket(string address, string port)
+        public webSocket()
         {
-            this.address = address;
-            this.port = port;
+            this.address = DefaultConfig.ServerAddr;
+            this.port = DefaultConfig.ServerPort;
         }
+
         ~webSocket()
         {
             foreach (var item in dic_Sockets.Values)
@@ -26,6 +27,7 @@ namespace cn.swu_acm.projects.sia.libs
                 }
             }
         }
+
         public void Start()
         {
             WebSocketServer wssv = new WebSocketServer("ws://" + address + ":" + port);
@@ -65,9 +67,12 @@ namespace cn.swu_acm.projects.sia.libs
         }
         private void Send(string clientUrl,string message)
         {
-            string respone = "";
+            ClientData clientData = new ClientData();
+            clientData.ReadFromJson(message);
+            Function function = FunctionSet.FindClientFunc(clientData.RequestFunc);
 
-            dic_Sockets[clientUrl].Send(respone);
+            //dic_Sockets[clientUrl].Send(respone);
+
         }
     }
 }
