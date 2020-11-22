@@ -41,5 +41,12 @@ namespace cn.swu_acm.projects.sia.libs
         {
             LeaveHistoryData.AddLast(leaveRecord);
         }
+
+        public LeaveHistory()
+        {
+            LeaveHistoryStarttime = "19700101000000";
+            LeaveHistoryEndtime = "19700101000000";
+            LeaveHistoryData = new LinkedList<LeaveRecord>();
+        }
     }
 }
