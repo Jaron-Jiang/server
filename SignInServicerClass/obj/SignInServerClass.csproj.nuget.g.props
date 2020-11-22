@@ -15,7 +15,4 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\build\netcoreapp2.1\Microsoft.NETCore.App.props" Condition="Exists('C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\build\netcoreapp2.1\Microsoft.NETCore.App.props')" />
   </ImportGroup>
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgJetBrains_ReSharper_CommandLineTools Condition=" '$(PkgJetBrains_ReSharper_CommandLineTools)' == '' ">C:\Users\lenovo\.nuget\packages\jetbrains.resharper.commandlinetools\2020.2.4</PkgJetBrains_ReSharper_CommandLineTools>
-  </PropertyGroup>
 </Project>
