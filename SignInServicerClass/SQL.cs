@@ -137,10 +137,9 @@ namespace cn.swu_acm.projects.sia.libs
             string constr = "server=" + SqlIp + ";port=" + SqlPort + ";user=" + SqlUser + ";password=" + SqlPassword + "; database=" + SqlDb + ";";
             conn = new MySqlConnection(constr);
         }
-
         public static string Select(string[] values,string tableName,string[] conditionKeys,string[] conditionValues)
         {
-            string sql = "select " + MergeKeys(values) + " from " + tableName + " where " + Merge(conditionKeys,conditionValues," and ");
+            string sql = "select " + MergeKeys(values) + " from " + tableName + " where " + Merge(conditionKeys, conditionValues, " and ");
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             JArray jArray = new JArray();
             MySqlDataReader result = cmd.ExecuteReader();
@@ -156,17 +155,49 @@ namespace cn.swu_acm.projects.sia.libs
             return jArray.ToString();
         }
 
-        public static bool IsSelect(string tableName, string[] conditionKeys, string[] conditionValues)
+        public static string Select(string[] values, string tableName)
+        {
+            string sql = "select " + MergeKeys(values) + " from " + tableName;
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            JArray jArray = new JArray();
+            MySqlDataReader result = cmd.ExecuteReader();
+            while (result.Read())
+            {
+                JObject jObject = new JObject();
+                for (int i = 0; i < values.Length; i++)
+                {
+                    jObject.Add(values[i], result[i].ToString());
+                }
+            }
+            result.Close();
+            return jArray.ToString();
+        }
+
+        public static int IsSelect(string tableName, string[] conditionKeys, string[] conditionValues)
         {
             string sql = "select count(*) from " + tableName + " where " + Merge(conditionKeys, conditionValues," and ");
             MySqlCommand cmd = new MySqlCommand(sql,conn);
-            bool flag = (cmd.ExecuteScalar() != null);
-            return flag;
+            return int.Parse(cmd.ExecuteScalar().ToString());
+        }
+
+        public static int IsSelect(string tableName)
+        {
+            string sql = "select count(*) from " + tableName;
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            return int.Parse(cmd.ExecuteScalar().ToString());
         }
 
         public static bool Update(string[] SetKeys,string[] SetValues,string tableName,string[] conditionKeys,string[] conditionValues)
         {
             string sql = "update set " + Merge(SetKeys,SetValues,",") + " from " + tableName + " where" + Merge(conditionKeys,conditionValues," and ");
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            bool flag = (cmd.ExecuteScalar() != null);
+            return flag;
+        }
+
+        public static bool Update(string[] SetKeys, string[] SetValues, string tableName)
+        {
+            string sql = "update set " + Merge(SetKeys, SetValues, ",") + " from " + tableName;
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             bool flag = (cmd.ExecuteScalar() != null);
             return flag;
