@@ -119,7 +119,14 @@ namespace cn.swu_acm.projects.sia.libs
             str += Values[Values.Length - 1];
             return str;
         }
-
+        /// <summary>
+        /// 初始化连接数据库
+        /// </summary>
+        /// <param name="ip">数据库IP</param>
+        /// <param name="port">数据库端口</param>
+        /// <param name="user">使用者</param>
+        /// <param name="password">密码</param>
+        /// <param name="db">数据库名</param>
         public static void init(string ip,string port ,string user,string password,string db)
         {
             SqlIp = ip;
