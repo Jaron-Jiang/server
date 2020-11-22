@@ -137,6 +137,7 @@ namespace cn.swu_acm.projects.sia.libs
             string constr = "server=" + SqlIp + ";port=" + SqlPort + ";user=" + SqlUser + ";password=" + SqlPassword + "; database=" + SqlDb + ";";
             conn = new MySqlConnection(constr);
         }
+
         public static string Select(string[] values,string tableName,string[] conditionKeys,string[] conditionValues)
         {
             string sql = "select " + MergeKeys(values) + " from " + tableName + " where " + Merge(conditionKeys, conditionValues, " and ");
@@ -173,14 +174,14 @@ namespace cn.swu_acm.projects.sia.libs
             return jArray.ToString();
         }
 
-        public static int IsSelect(string tableName, string[] conditionKeys, string[] conditionValues)
+        public static int SelectCount(string tableName, string[] conditionKeys, string[] conditionValues)
         {
             string sql = "select count(*) from " + tableName + " where " + Merge(conditionKeys, conditionValues," and ");
             MySqlCommand cmd = new MySqlCommand(sql,conn);
             return int.Parse(cmd.ExecuteScalar().ToString());
         }
 
-        public static int IsSelect(string tableName)
+        public static int SelectCount(string tableName)
         {
             string sql = "select count(*) from " + tableName;
             MySqlCommand cmd = new MySqlCommand(sql, conn);
