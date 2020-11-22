@@ -1,1 +1,5 @@
 .vs
+*.sln
+SignInServicerClass/bin
+SignInServicerClass/obj
+*.csproj
