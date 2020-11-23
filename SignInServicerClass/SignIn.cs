@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Newtonsoft.Json.Linq;
 namespace cn.swu_acm.projects.sia.libs
 {
     class SignIn
@@ -15,6 +15,7 @@ namespace cn.swu_acm.projects.sia.libs
         {
             SignInList signInList = new SignInList();
             //查询语句
+            
             return signInList;
         }
         /// <summary>
@@ -22,10 +23,30 @@ namespace cn.swu_acm.projects.sia.libs
         /// </summary>
         /// <param name="id">学生或者老师的id</param>
         /// <returns></returns>
-        public SignInList SignSelectHistorys(string id)
+        public SignInList SignSelectHistorys(string id,string starttime,string endtime,string startdate,string enddate)
         {
             SignInList signInList = new SignInList();
-            //查询语句
+            if (id[0] == '1')//老师端
+            {
+                //查询语句
+                string[] conditionKeys = { "id","form_startdate", "form_enddate", "form_starttime", "form_endtime" };
+                string[] conditionValues = { id,startdate, enddate, starttime, endtime };
+                string[] values = global.FormsColumnNames;
+                string tablename = "forms";
+                string json = SQL.Select(values,tablename,conditionKeys,conditionValues);
+                JArray jArray = new JArray();
+                jArray = JArray.Parse(json);
+                for(int i = 0; i < jArray.Count; i++)
+                {
+
+                }
+                SignInHistoryRecord signInHistoryRecord = new SignInHistoryRecord();
+                //signInHistoryRecord = josn转对象
+            }
+            else if (id[0] == '2')
+            {
+
+            }
             return signInList;
         }
         /// <summary>

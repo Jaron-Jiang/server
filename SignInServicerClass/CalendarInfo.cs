@@ -6,6 +6,7 @@ namespace cn.swu_acm.projects.sia.libs
 {
     class CalendarInfo:Info
     {
+        private string user_id;//该课表用户的id
         private string calendar_title;
         private string calendar_starttime;
         private string calendar_endtime;
@@ -17,6 +18,14 @@ namespace cn.swu_acm.projects.sia.libs
             set
             {
                 calendar_title = value;
+            }
+        }
+        public string UserId
+        {
+            get => user_id;
+            set
+            {
+                user_id = value;
             }
         }
         public string CalendarStarttime
@@ -58,6 +67,7 @@ namespace cn.swu_acm.projects.sia.libs
             CalendarEndtime = "19700101000000";
             CalendarAddress = "Unknown";
             CalendarDescription = "";
+            UserId = "";
         }
     }
 }

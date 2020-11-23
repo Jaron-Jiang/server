@@ -6,7 +6,13 @@ namespace cn.swu_acm.projects.sia.libs
 {
     class Login
     {
-        public bool LoginPassword(string id,string password)
+        /// <summary>
+        /// 密码登录
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="password">密码</param>
+        /// <returns></returns>
+        public static bool LoginPassword(string id,string password)
         {
             string[] Key = { "id","password"}; 
             string[] value = { id,password };
@@ -26,7 +32,7 @@ namespace cn.swu_acm.projects.sia.libs
             }
             return false;
         }
-        public string LoginFace(string id,string face)
+        public static string LoginFace(string id,string face)
         {
             //调库
             //读取数据库得人脸数据来与客户端发出得数据做对比。
