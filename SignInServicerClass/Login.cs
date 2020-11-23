@@ -1,42 +1,83 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace cn.swu_acm.projects.sia.libs
 {
     class Login
     {
-        /// <summary>
-        /// 密码登录
-        /// </summary>
-        /// <param name="id">id</param>
-        /// <param name="password">密码</param>
-        /// <returns></returns>
-        public static bool LoginPassword(string id,string password)
+        public static bool LoginPassword(LoginDataPassword loginDataPassword)
         {
-            string[] Key = { "id","password"}; 
-            string[] value = { id,password };
-            if(id[0] == '1')//老师
+            string tablename = "Admin";
+            if(tablename == "Admin")
             {
-                bool flag = false;
-                string tablename = "teacher_profile";
-                flag =  SQL.IsSelect(tablename,Key,value);
-                return flag == true ? true : false;
+                string[] conditionKey = { "user_id", "user_pass_hash" };
+                string[] conditionVal = { loginDataPassword.UserId,loginDataPassword.Password};
+                int flag = SQL.SelectCount(tablename, conditionKey, conditionVal);
+                if (flag > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    tablename = "Staff";
+                }
             }
-            else if(id[0] == '2')
+            else
             {
-                bool flag = false;
-                string tablename = "student_profile";
-                flag = SQL.IsSelect(tablename, Key, value);
-                return flag == true ? true : false;
+                string[] conditionKey = { "user_id", "user_pass_hash" };
+                string[] conditionVal = { loginDataPassword.UserId, loginDataPassword.Password };
+                int flag = SQL.SelectCount(tablename, conditionKey, conditionVal);
+                if (flag > 0)
+                {
+                    return true;
+                }
             }
+
+            //if ()
+            //{
+            //    return true;
+            //}
+            //if(id[0] == '1')//老师端
+            //{
+            //    string tablename= "";//to do;
+            //    string[] conditionkey = { };//to do;
+            //    string[] conditionval = { loginDataPassword.Password };
+            //    int flag = SQL.SelectCount(tablename, conditionkey, conditionval);
+            //    if (flag >0 ) return true;
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
+            //else if(id[0] == '2')//学生端
+            //{
+            //    string tablename = "";//to do;
+            //    string[] conditionkey = { };//to do;
+            //    string[] conditionval = { loginDataPassword.Password };
+            //    int flag =SQL.SelectCount(tablename, conditionkey, conditionval);
+            //    if (flag > 0) return true;
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
             return false;
         }
-        public static string LoginFace(string id,string face)
+        public static bool LoginFace(LoginDataFace loginDataFace)
         {
-            //调库
-            //读取数据库得人脸数据来与客户端发出得数据做对比。
-            return "false";
+            string id = loginDataFace.UserId;
+            if(id[0] == '1')//老师端
+            {
+                //调库
+            }
+            else if(id[0]=='2')//学生端
+            {
+                //调库
+            }
+            return false;
         }
     }
 }

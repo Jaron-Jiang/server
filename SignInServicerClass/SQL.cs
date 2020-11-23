@@ -63,13 +63,11 @@ namespace cn.swu_acm.projects.sia.libs
 
         static SQL()
         {
-            SqlIp = DefaultConfig.DatabaseAddr;
-            SqlPort = DefaultConfig.DatabasePort;
-            SqlUser = DefaultConfig.DatabaseUser;
-            SqlPassword = DefaultConfig.DatabasePass;
-            SqlDb = DefaultConfig.DatabaseName;
-            string constr = "server=" + SqlIp + ";port=" + SqlPort + ";user=" + SqlUser + ";password=" + SqlPassword + "; database=" + SqlDb + ";";
-            conn = new MySqlConnection(constr);
+            SqlIp = "";
+            SqlPort = "";
+            SqlUser = "";
+            SqlPassword = "";
+            SqlDb = "";
         }
 
         /// <summary>
@@ -121,15 +119,24 @@ namespace cn.swu_acm.projects.sia.libs
             str += Values[Values.Length - 1];
             return str;
         }
-
         /// <summary>
-        /// 有条件的查询
+        /// 初始化连接数据库
         /// </summary>
-        /// <param name="values">查询返回的东西</param>
-        /// <param name="tableName">查询的表</param>
-        /// <param name="conditionKeys">查询条件的键</param>
-        /// <param name="conditionValues">查询条件的键值</param>
-        /// <returns></returns>
+        /// <param name="ip">数据库IP</param>
+        /// <param name="port">数据库端口</param>
+        /// <param name="user">使用者</param>
+        /// <param name="password">密码</param>
+        /// <param name="db">数据库名</param>
+        public static void init(string ip,string port ,string user,string password,string db)
+        {
+            SqlIp = ip;
+            SqlPort = port;
+            SqlUser = user;
+            SqlPassword = password;
+            SqlDb = db;
+            string constr = "server=" + SqlIp + ";port=" + SqlPort + ";user=" + SqlUser + ";password=" + SqlPassword + "; database=" + SqlDb + ";";
+            conn = new MySqlConnection(constr);
+        }
         public static string Select(string[] values,string tableName,string[] conditionKeys,string[] conditionValues)
         {
             string sql = "select " + MergeKeys(values) + " from " + tableName + " where " + Merge(conditionKeys, conditionValues, " and ");
@@ -148,12 +155,6 @@ namespace cn.swu_acm.projects.sia.libs
             return jArray.ToString();
         }
 
-        /// <summary>
-        /// 无条件的查询
-        /// </summary>
-        /// <param name="values">查询返回的东西</param>
-        /// <param name="tableName">查询的表</param>
-        /// <returns></returns>
         public static string Select(string[] values, string tableName)
         {
             string sql = "select " + MergeKeys(values) + " from " + tableName;
@@ -172,13 +173,6 @@ namespace cn.swu_acm.projects.sia.libs
             return jArray.ToString();
         }
 
-        /// <summary>
-        /// 有条件的查询表中数据的条数
-        /// </summary>
-        /// <param name="tableName">查询的表</param>
-        /// <param name="conditionKeys">查询条件的键</param>
-        /// <param name="conditionValues">查询条件的键值</param>
-        /// <returns></returns>
         public static int SelectCount(string tableName, string[] conditionKeys, string[] conditionValues)
         {
             string sql = "select count(*) from " + tableName + " where " + Merge(conditionKeys, conditionValues," and ");
@@ -186,11 +180,6 @@ namespace cn.swu_acm.projects.sia.libs
             return int.Parse(cmd.ExecuteScalar().ToString());
         }
 
-        /// <summary>
-        /// 无条件的查询表中数据的条数
-        /// </summary>
-        /// <param name="tableName">查询的表</param>
-        /// <returns></returns>
         public static int SelectCount(string tableName)
         {
             string sql = "select count(*) from " + tableName;
@@ -198,15 +187,6 @@ namespace cn.swu_acm.projects.sia.libs
             return int.Parse(cmd.ExecuteScalar().ToString());
         }
 
-        /// <summary>
-        /// 有条件更新数据库
-        /// </summary>
-        /// <param name="SetKeys">要更新的键键值的键</param>
-        /// <param name="SetValues">要更新的键值</param>
-        /// <param name="tableName">要更新的表</param>
-        /// <param name="conditionKeys">更新条件的键</param>
-        /// <param name="conditionValues">更新条件的键值</param>
-        /// <returns></returns>
         public static bool Update(string[] SetKeys,string[] SetValues,string tableName,string[] conditionKeys,string[] conditionValues)
         {
             string sql = "update set " + Merge(SetKeys,SetValues,",") + " from " + tableName + " where" + Merge(conditionKeys,conditionValues," and ");
@@ -215,13 +195,6 @@ namespace cn.swu_acm.projects.sia.libs
             return flag;
         }
 
-        /// <summary>
-        /// 无条件更新数据库
-        /// </summary>
-        /// <param name="SetKeys">要更新的键键值的键</param>
-        /// <param name="SetValues">要更新的键值</param>
-        /// <param name="tableName">要更新的表</param>
-        /// <returns></returns>
         public static bool Update(string[] SetKeys, string[] SetValues, string tableName)
         {
             string sql = "update set " + Merge(SetKeys, SetValues, ",") + " from " + tableName;
@@ -230,14 +203,6 @@ namespace cn.swu_acm.projects.sia.libs
             return flag;
         }
 
-
-        /// <summary>
-        /// 向数据库中插入数据
-        /// </summary>
-        /// <param name="tableName">要插入的表</param>
-        /// <param name="conditionKeys">要插入的键</param>
-        /// <param name="conditionValues">要插入的键值</param>
-        /// <returns></returns>
         public static bool Insert(string tableName, string[] conditionKeys, string[] conditionValues)
         {
             string sql = "insert into " + tableName + " (" + MergeKeys(conditionKeys) +") values (" + MergeValues(conditionValues) +")";
